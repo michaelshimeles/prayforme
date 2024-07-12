@@ -13,7 +13,7 @@ export default function TwitterShare() {
       target="_blank"
       data-size="large">
       <Button>
-        Share
+        Share on X (Twitter)
       </Button>
     </Link>)
 }

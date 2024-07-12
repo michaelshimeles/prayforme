@@ -1,5 +1,8 @@
+import FacebookShare from "@/components/facebook-share";
 import HeroSection from "@/components/homepage/hero-section";
+import PinterestShare from "@/components/pinterest-share";
 import PrayerCard from "@/components/prayer-card";
+import TelegramShare from "@/components/telegram-share";
 import TwitterShare from "@/components/twitter-share";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/wrapper/footer";
@@ -60,7 +63,12 @@ export default async function Home() {
         </div>
         <div className="flex flex-col justify-center items-center">
           <Footer />
-          <TwitterShare />
+          <div className="flex flex-wrap justify-center items-center gap-3">
+            <TwitterShare />
+            <FacebookShare />
+            <TelegramShare />
+            <PinterestShare />
+          </div>
         </div>
       </section>
     </div>
