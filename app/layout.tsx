@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 import './globals.css'
 import { Metadata } from 'next'
 import { Analytics } from "@vercel/analytics/react"
+import { Toaster } from "@/components/ui/sonner"
 
 const fontHeading = Manrope({
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: {
         )}
       >
         {children}
+        <Toaster />
         <Analytics />
       </body>
     </html>

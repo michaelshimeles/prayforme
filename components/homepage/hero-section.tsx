@@ -8,10 +8,11 @@ import { z } from "zod";
 import { Textarea } from "../ui/textarea";
 import { v4 as uuidv4 } from 'uuid';
 import { createRequest } from "@/utils/actions/create-request";
+import { toast } from "sonner";
 uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d
 
 const FormSchema = z.object({
-    request: z.string(),
+    request: z.string().describe("Your prayer request"),
 })
 
 export default function HeroSection() {
@@ -33,6 +34,13 @@ export default function HeroSection() {
         const numOfPrayers = "0"
         try {
             const response = await createRequest(requestId, data?.request, numOfPrayers)
+
+            console.log('response', response)
+
+            if (response?.flagged) {
+                toast("Prayer request has been flagged as inapproriate")
+                return
+            }
 
             form.reset()
 
