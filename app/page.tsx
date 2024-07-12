@@ -1,10 +1,13 @@
 import HeroSection from "@/components/homepage/hero-section";
 import PrayerCard from "@/components/prayer-card";
+import TwitterShare from "@/components/twitter-share";
+import { Button } from "@/components/ui/button";
 import Footer from "@/components/wrapper/footer";
 import NavBar from "@/components/wrapper/navbar";
 import { Prayer } from "@/utils/types";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import Link from "next/link";
 
 const getPrayerRequest = async () => {
   const cookieStore = cookies();
@@ -55,7 +58,10 @@ export default async function Home() {
             ))}
           </div>
         </div>
-        <Footer />
+        <div className="flex flex-col justify-center items-center">
+          <Footer />
+          <TwitterShare />
+        </div>
       </section>
     </div>
 

@@ -50,7 +50,6 @@ export default function HeroSection() {
         <div className="flex flex-col items-center justify-center text-center space-y-4 w-full">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Need prayer? Let us know</h1>
             <p className="max-w-[600px] text-muted-foreground md:text-xl">Want to pray for others? Scroll below.</p>
-            {/* <div className="flex w-full max-w-[600px]"> */}
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-2 w-full max-w-md">
                     <FormField
@@ -69,7 +68,6 @@ export default function HeroSection() {
                 </form>
 
             </Form>
-            {/* </div> */}
         </div>
     )
 }
