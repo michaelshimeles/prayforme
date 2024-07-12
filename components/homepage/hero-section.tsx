@@ -24,6 +24,10 @@ export default function HeroSection() {
     })
 
     async function onSubmit(data: z.infer<typeof FormSchema>) {
+
+        if (data?.request === '') {
+            return
+        }
         const requestId = uuidv4()
 
         const numOfPrayers = "0"
