@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function PrayerCard({ prayer }: { prayer: Prayer }) {
   return (
-    <div className="bg-white rounded-lg shadow p-4 flex flex-col gap-3">
+    <div className="bg-white rounded-lg shadow p-4 flex flex-col justify-between gap-3">
       <p className="text-sm text-muted-foreground">{prayer?.request}</p>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
