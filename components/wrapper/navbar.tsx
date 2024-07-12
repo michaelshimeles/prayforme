@@ -11,7 +11,7 @@ export default function NavBar() {
                 <span className="sr-only">Acme Inc</span>
             </Link>
             <nav className="ml-auto flex gap-4 sm:gap-6">
-                <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+                <Link href="https://instagram.com/foolishforjesus" target="_blank" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                     Instagram
                 </Link>
             </nav>
