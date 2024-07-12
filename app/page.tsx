@@ -4,10 +4,9 @@ import Footer from "@/components/wrapper/footer";
 import NavBar from "@/components/wrapper/navbar";
 import { Prayer } from "@/utils/types";
 import { createServerClient } from "@supabase/ssr";
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export const getPrayerRequest = async () => {
+const getPrayerRequest = async () => {
   const cookieStore = cookies();
 
   const supabase = createServerClient(
