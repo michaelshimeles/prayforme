@@ -6,6 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Textarea } from "../ui/textarea";
+import { v4 as uuidv4 } from 'uuid';
+import { createRequest } from "@/utils/actions/create-request";
+uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d
 
 const FormSchema = z.object({
     request: z.string(),
@@ -21,12 +24,13 @@ export default function HeroSection() {
     })
 
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-        console.log('data', data)
+        const requestId = uuidv4()
         try {
-
+            const response = await createRequest(requestId, data?.request)
 
             form.reset()
-            return
+
+            return response
         } catch (error) {
             console.log('error', error)
             return error
