@@ -3,9 +3,8 @@ import { createServerClient } from "@supabase/ssr";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export const createRequest = async (
+export const prayTab = async (
   requestId: string,
-  request: string,
   numOfPrayers: string
 ) => {
   const cookieStore = cookies();
@@ -21,16 +20,17 @@ export const createRequest = async (
       },
     }
   );
+
+  const prayer_number = Number(numOfPrayers) + 1;
   try {
     const { data, error } = await supabase
       .from("requests")
-      .insert([
+      .update([
         {
-          request: request,
-          request_id: requestId,
-          num_of_prayers: numOfPrayers,
+          num_of_prayers: String(prayer_number),
         },
       ])
+      .eq("request_id", requestId)
       .select();
 
     if (error?.code) return error;

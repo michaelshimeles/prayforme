@@ -25,8 +25,10 @@ export default function HeroSection() {
 
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         const requestId = uuidv4()
+
+        const numOfPrayers = "0"
         try {
-            const response = await createRequest(requestId, data?.request)
+            const response = await createRequest(requestId, data?.request, numOfPrayers)
 
             form.reset()
 

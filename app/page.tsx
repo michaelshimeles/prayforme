@@ -24,7 +24,8 @@ export const getPrayerRequest = async () => {
   try {
     const { data, error } = await supabase
       .from("requests")
-      .select();
+      .select()
+      .order('id', { ascending: false })
 
     if (error?.code) return error;
 
