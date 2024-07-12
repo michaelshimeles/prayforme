@@ -66,7 +66,7 @@ export default function HeroSection() {
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl className="w-full">
-                                    <Textarea {...field} placeholder="Enter your prayer request" className="flex-1" />
+                                    <Textarea {...field} placeholder="Enter your prayer request, please be as specific as possible" className="flex-1" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
