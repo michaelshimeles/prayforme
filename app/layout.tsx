@@ -19,8 +19,8 @@ const fontBody = Manrope({
 
 export const metadata: Metadata = {
   title: 'Pray For Me',
-  description: 'Need prayer? Let us know. Want to pray for others? Scroll below.',
   openGraph: {
+    description: 'Need prayer? Let us know. Want to pray for others? Scroll below.',
     images: ['https://utfs.io/f/ff3f6d07-5add-4c4e-9f21-9604f758cc7f-pwwvmb.png']
   },
 }
