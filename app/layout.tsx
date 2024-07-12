@@ -3,6 +3,7 @@
 import { Manrope } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
+import { Metadata } from 'next'
 
 const fontHeading = Manrope({
   subsets: ['latin'],
@@ -15,6 +16,15 @@ const fontBody = Manrope({
   display: 'swap',
   variable: '--font-body',
 })
+
+
+export const metadata: Metadata = {
+  title: 'Pray For Me',
+  description: 'Need prayer? Let us know. Want to pray for others? Scroll below.',
+  openGraph: {
+    images: ['https://utfs.io/f/c041feb8-8f74-405f-88f5-2dd4d958e664-6yut8w.png']
+  },
+}
 
 export default function RootLayout({ children }: {
   children: React.ReactNode
