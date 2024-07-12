@@ -43,8 +43,10 @@ export default async function Home() {
   console.log("prayer", response)
   return (
     <div className="flex flex-col min-h-dvh bg-[#F9F9F9]">
-      <NavBar />
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-[#F9F9F9] mt-16">
+      <div className="px-[1rem] fixed top-8 left-1/2 -translate-x-1/2 z-50 max-w-[500px] w-full">
+        <NavBar />
+      </div>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-[#F9F9F9] mt-16 md:mt-4">
         <div className="container px-4 md:px-6 space-y-8">
           <HeroSection />
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

@@ -5,7 +5,7 @@ export default function NavBar() {
 
 
     return (
-        <header className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-[90%] rounded-full bg-white shadow-lg px-6 py-3 flex items-center justify-between">
+        <header className="w-full rounded-full bg-white shadow-lg px-6 py-3 flex items-center justify-between">
             <Link href="#" className="flex items-center justify-center" prefetch={false}>
                 🙏
             </Link>
