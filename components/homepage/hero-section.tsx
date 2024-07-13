@@ -9,6 +9,7 @@ import { Textarea } from "../ui/textarea";
 import { v4 as uuidv4 } from 'uuid';
 import { createRequest } from "@/utils/actions/create-request";
 import { toast } from "sonner";
+import { ReloadIcon } from "@radix-ui/react-icons"
 
 const FormSchema = z.object({
     request: z.string().describe("Your prayer request").min(10, "Your prayer request is too short. Please add more details")
@@ -106,11 +107,15 @@ export default function HeroSection() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" disabled={isOnCooldown}>
+                    {!form.formState.isSubmitting ? <Button type="submit" disabled={isOnCooldown}>
                         {isOnCooldown
                             ? `Wait ${cooldownMinutes}m ${cooldownSeconds}s`
                             : "Submit"}
+                    </Button> : <Button disabled>
+                        <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                        Please wait
                     </Button>
+                    }
                 </form>
             </Form>
         </div>
