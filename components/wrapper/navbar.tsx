@@ -1,4 +1,4 @@
-import { MountainIcon } from "lucide-react"
+import { Instagram, MountainIcon } from "lucide-react"
 import Link from 'next/link'
 
 export default function NavBar() {
@@ -11,7 +11,7 @@ export default function NavBar() {
             </Link>
             <nav className="ml-auto flex gap-4 sm:gap-6">
                 <Link href="https://instagram.com/foolishforjesus" target="_blank" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-                    Instagram
+                    <Instagram />
                 </Link>
             </nav>
         </header>
