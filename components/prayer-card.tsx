@@ -5,6 +5,7 @@ import { HandIcon, Scroll } from 'lucide-react'
 import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
 import { useState } from 'react'
+import { motion } from "framer-motion"
 
 export default function PrayerCard({ prayer }: { prayer: Prayer }) {
   const [open, setOpen] = useState<boolean>(false)
@@ -16,13 +17,32 @@ export default function PrayerCard({ prayer }: { prayer: Prayer }) {
           <div className="bg-[#F3F3F3] rounded-full p-2 hover:cursor-pointer" onClick={async () => {
             await prayTab(prayer?.request_id, prayer?.num_of_prayers)
           }}>
-            <HandIcon className="w-6 h-6 text-[#6B7280]" />
+            <motion.div whileTap={{
+              scale: 0.8,
+              rotate: 20,
+              borderRadius: "100%"
+            }}
+              whileHover={{
+                scale: 0.8,
+                rotate: -20,
+                borderRadius: "100%"
+              }}
+            >
+              <HandIcon className="w-6 h-6 text-[#6B7280]" />
+            </motion.div>
           </div>
           <span className="text-sm font-medium">{prayer?.num_of_prayers}</span>
         </div>
         {prayer?.encouragement && <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger>
-            <Scroll className="w-6 h-6 text-[#6B7280]" />
+            <motion.div whileHover={{
+              scale: 0.8,
+              rotate: 20,
+              borderRadius: "100%"
+            }}
+            >
+              <Scroll className="w-6 h-6 text-[#6B7280]" />
+            </motion.div>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -36,5 +56,5 @@ export default function PrayerCard({ prayer }: { prayer: Prayer }) {
           </DialogContent>
         </Dialog>}
       </div>
-    </div>)
+    </div >)
 }
