@@ -1,24 +1,43 @@
 "use server";
-import { prisma } from "@/lib/prisma";
+import { createServerClient } from "@supabase/ssr";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 
-export const prayTab = async (requestId: string, numOfPrayers: string) => {
+export const prayTab = async (
+  requestId: string,
+  numOfPrayers: string
+) => {
+  const cookieStore = cookies();
+
+  const supabase = createServerClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_SECRET_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value;
+        },
+      },
+    }
+  );
 
   const prayer_number = Number(numOfPrayers) + 1;
-
   try {
-    const updateNumOfPrayers = await prisma.request.update({
-      where: {
-        requestId: requestId,
-      },
-      data: {
-        numOfPrayers: String(prayer_number),
-      },
-    });
+    const { data, error } = await supabase
+      .from("requests")
+      .update([
+        {
+          num_of_prayers: String(prayer_number),
+        },
+      ])
+      .eq("request_id", requestId)
+      .select();
+
+    if (error?.code) return error;
 
     revalidatePath("/");
 
-    return updateNumOfPrayers;
+    return data;
   } catch (error: any) {
     return error;
   }
