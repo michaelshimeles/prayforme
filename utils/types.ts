@@ -4,4 +4,5 @@ export type Prayer = {
   request: string;
   request_id: string;
   num_of_prayers: string;
+  encouragement: string;
 };

@@ -4,13 +4,11 @@ import PinterestShare from "@/components/pinterest-share";
 import PrayerCard from "@/components/prayer-card";
 import TelegramShare from "@/components/telegram-share";
 import TwitterShare from "@/components/twitter-share";
-import { Button } from "@/components/ui/button";
 import Footer from "@/components/wrapper/footer";
 import NavBar from "@/components/wrapper/navbar";
 import { Prayer } from "@/utils/types";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import Link from "next/link";
 
 const getPrayerRequest = async () => {
   const cookieStore = cookies();

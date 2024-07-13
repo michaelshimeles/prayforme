@@ -16,6 +16,23 @@ export const createRequest = async (
     input: request,
   });
 
+  const completion = await openai.chat.completions.create({
+    messages: [
+      {
+        role: "system",
+        content:
+          "You are a AI Bible assistant, your job is to send an encouraging bible verse for the prayer request that is given to you. Don't add anything else, just the bible verse",
+      },
+      {
+        role: "user",
+        content: "The prayer request:" + request,
+      },
+    ],
+    model: "gpt-4o",
+  });
+
+  console.log('completion', completion?.choices?.[0]?.message?.content)
+
   const cookieStore = cookies();
   const headersList = headers();
 
@@ -70,6 +87,7 @@ export const createRequest = async (
           request: request,
           request_id: requestId,
           num_of_prayers: numOfPrayers,
+          encouragement: completion?.choices?.[0]?.message?.content
         },
       ])
       .select();
@@ -78,7 +96,7 @@ export const createRequest = async (
 
     revalidatePath("/");
 
-    return data;
+    // return data;
   } catch (error: any) {
     return error;
   }
