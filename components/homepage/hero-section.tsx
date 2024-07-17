@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { createRequest } from "@/utils/actions/create-request";
 import { toast } from "sonner";
 import { ReloadIcon } from "@radix-ui/react-icons"
+import { isFlaggedRequest } from "@/utils/types";
 
 const FormSchema = z.object({
     request: z.string().describe("Your prayer request").min(10, "Your prayer request is too short. Please add more details")
@@ -64,7 +65,7 @@ export default function HeroSection() {
         try {
             const response = await createRequest(requestId, data?.request, numOfPrayers);
 
-            if (response?.flagged) {
+            if (isFlaggedRequest(response)) {
                 toast("Prayer request has been flagged as inappropriate");
                 return;
             }
@@ -84,6 +85,7 @@ export default function HeroSection() {
             return error;
         }
     }
+
 
     const isOnCooldown = cooldownRemaining > 0;
     const cooldownMinutes = Math.floor(cooldownRemaining / 60000);
