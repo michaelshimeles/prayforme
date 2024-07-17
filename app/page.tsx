@@ -6,8 +6,10 @@ import TelegramShare from "@/components/share/telegram-share";
 import TwitterShare from "@/components/share/twitter-share";
 import Footer from "@/components/wrapper/footer";
 import NavBar from "@/components/wrapper/navbar";
+import { prisma } from "@/lib/prisma";
 import { getPrayerRequest } from "@/utils/actions/get-prayer-request";
 import { Prayer } from "@/utils/types";
+
 
 export default async function Home() {
 
