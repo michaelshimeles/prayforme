@@ -59,7 +59,10 @@ export const createRequest = async (
       },
     }
   );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 179367fff83479415e227222a74f7f13bdf126d7
   if (moderation?.results?.[0]?.flagged) {
     await supabase
       .from("ModeratedRequest")
