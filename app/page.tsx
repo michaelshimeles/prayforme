@@ -14,6 +14,8 @@ export default async function Home() {
 
   const response = await getPrayerRequest()
 
+  console.log('response', response)
+
   return (
     <div className="flex flex-col min-h-dvh bg-[#F9F9F9]">
       <div className="px-[1rem] fixed top-8 left-1/2 -translate-x-1/2 z-50 max-w-[500px] w-full">
