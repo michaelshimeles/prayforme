@@ -9,6 +9,7 @@ export const getPrayerRequest = async () => {
       }
     })
 
+    console.log('prayerRequests', prayerRequests)
     return prayerRequests;
   } catch (error: any) {
     return error;
