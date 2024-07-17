@@ -1,9 +1,9 @@
-import FacebookShare from "@/components/facebook-share";
 import HeroSection from "@/components/homepage/hero-section";
-import PinterestShare from "@/components/pinterest-share";
 import PrayerCard from "@/components/prayer-card";
-import TelegramShare from "@/components/telegram-share";
-import TwitterShare from "@/components/twitter-share";
+import FacebookShare from "@/components/share/facebook-share";
+import PinterestShare from "@/components/share/pinterest-share";
+import TelegramShare from "@/components/share/telegram-share";
+import TwitterShare from "@/components/share/twitter-share";
 import Footer from "@/components/wrapper/footer";
 import NavBar from "@/components/wrapper/navbar";
 import { Prayer } from "@/utils/types";

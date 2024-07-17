@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 
 export default function FacebookShare() {
   const shareUrl = "https://www.prayforme.fyi/";

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 
 export default function TwitterShare() {
   const tweetText = "I just found this site https://www.prayforme.fyi/. You can post your prayer request anonymously.\n\nIf you need prayer, you can post your request there. If you want to pray for others, you can pray for people's requests.";
