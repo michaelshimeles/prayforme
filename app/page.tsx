@@ -9,7 +9,7 @@ import NavBar from "@/components/wrapper/navbar";
 import { Prayer } from "@/utils/types";
 import { prisma } from "@/lib/prisma";
 
-export const getPrayerRequest = async () => {
+const getPrayerRequest = async () => {
   try {
     const prayerRequests = await prisma.request.findMany({
       orderBy: {
