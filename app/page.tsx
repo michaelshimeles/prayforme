@@ -26,7 +26,7 @@ const getPrayerRequest = async () => {
   );
   try {
     const { data, error } = await supabase
-      .from("requests")
+      .from("Request")
       .select()
       .order('id', { ascending: false })
 

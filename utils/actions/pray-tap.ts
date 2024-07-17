@@ -24,13 +24,13 @@ export const prayTab = async (
   const prayer_number = Number(numOfPrayers) + 1;
   try {
     const { data, error } = await supabase
-      .from("requests")
+      .from("Request")
       .update([
         {
-          num_of_prayers: String(prayer_number),
+          numOfPrayers: String(prayer_number),
         },
       ])
-      .eq("request_id", requestId)
+      .eq("requestId", requestId)
       .select();
 
     if (error?.code) return error;

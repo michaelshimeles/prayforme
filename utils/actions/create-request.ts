@@ -61,11 +61,11 @@ export const createRequest = async (
   );
   if (moderation?.results?.[0]?.flagged) {
     await supabase
-      .from("moderated")
+      .from("ModeratedRequest")
       .insert([
         {
           message: request,
-          request_id: requestId,
+          requestId: requestId,
           ip_address: ip,
           device: JSON.stringify(deviceInfo),
           location: location,
@@ -81,11 +81,11 @@ export const createRequest = async (
 
   try {
     const { data, error } = await supabase
-      .from("requests")
+      .from("Request")
       .insert([
         {
           request: request,
-          request_id: requestId,
+          requestId: requestId,
           num_of_prayers: numOfPrayers,
           encouragement: completion?.choices?.[0]?.message?.content
         },
@@ -96,7 +96,7 @@ export const createRequest = async (
 
     revalidatePath("/");
 
-    // return data;
+    return data;
   } catch (error: any) {
     return error;
   }
