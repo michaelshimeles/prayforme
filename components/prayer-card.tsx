@@ -15,7 +15,7 @@ export default function PrayerCard({ prayer }: { prayer: Prayer }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="bg-[rgb(243,243,243)] rounded-full p-2 hover:cursor-pointer" onClick={async () => {
-            await prayTab(prayer?.requestId, prayer?.numOfPrayers)
+            await prayTab(prayer?.request_id, prayer?.num_of_prayers)
           }}>
             <motion.div whileTap={{
               scale: 0.8,
@@ -31,7 +31,7 @@ export default function PrayerCard({ prayer }: { prayer: Prayer }) {
               <HandIcon className="w-6 h-6 text-[#6B7280]" />
             </motion.div>
           </div>
-          <span className="text-sm font-medium">{prayer?.numOfPrayers}</span>
+          <span className="text-sm font-medium">{prayer?.num_of_prayers}</span>
         </div>
         {prayer?.encouragement && <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger>

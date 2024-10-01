@@ -7,37 +7,24 @@ import TwitterShare from "@/components/share/twitter-share";
 import Footer from "@/components/wrapper/footer";
 import NavBar from "@/components/wrapper/navbar";
 import { Prayer } from "@/utils/types";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
 
 const getPrayerRequest = async () => {
-  const cookieStore = cookies();
 
-  const supabase = createServerClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
-        },
-      },
-    }
-  );
   try {
-    const { data, error } = await supabase
-      .from("Request")
-      .select()
-      .order('id', { ascending: false })
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/prayer-requests`, {
+      headers: {
+        Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+      },
+    });
 
-    if (error?.code) return error;
+    const { result } = await response.json();
 
-    return data;
+    return result;
   } catch (error: any) {
     return error;
-  }
-};
 
+  };
+}
 
 
 export default async function Home() {

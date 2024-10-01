@@ -49,14 +49,14 @@ export default function HeroSection() {
     }, [lastSubmissionTime]);
 
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-        if (data?.request === '') {
-            return;
-        }
+        // if (data?.request === '') {
+        //     return;
+        // }
 
-        if (lastSubmissionTime && Date.now() - lastSubmissionTime < COOLDOWN_TIME) {
-            toast("Please wait before submitting another request.");
-            return;
-        }
+        // if (lastSubmissionTime && Date.now() - lastSubmissionTime < COOLDOWN_TIME) {
+        //     toast("Please wait before submitting another request.");
+        //     return;
+        // }
 
         const requestId = uuidv4();
         const numOfPrayers = "0";
@@ -64,6 +64,7 @@ export default function HeroSection() {
         try {
             const response = await createRequest(requestId, data?.request, numOfPrayers);
 
+            console.log('response', response);
             if (response?.flagged) {
                 toast("Prayer request has been flagged as inappropriate");
                 return;

@@ -1,43 +1,25 @@
 "use server";
-import { createServerClient } from "@supabase/ssr";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 
-export const prayTab = async (
-  requestId: string,
-  numOfPrayers: string
-) => {
-  const cookieStore = cookies();
-
-  const supabase = createServerClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
-        },
-      },
-    }
-  );
-
+export const prayTab = async (requestId: string, numOfPrayers: string) => {
   const prayer_number = Number(numOfPrayers) + 1;
+  console.log("prayer_number", prayer_number);
   try {
-    const { data, error } = await supabase
-      .from("Request")
-      .update([
-        {
-          numOfPrayers: String(prayer_number),
-        },
-      ])
-      .eq("requestId", requestId)
-      .select();
-
-    if (error?.code) return error;
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pray-tap`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+      },
+      body: JSON.stringify({
+        requestId,
+        numOfPrayers: prayer_number,
+      }),
+    });
 
     revalidatePath("/");
 
-    return data;
+    return;
   } catch (error: any) {
     return error;
   }
